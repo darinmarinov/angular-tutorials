@@ -1,0 +1,38 @@
+.container {
+  width: 100%; }
+
+.tile1, .tile2, .tile3, .tile4, .tile5 {
+  background: #000;
+  height: 200px;
+  display: block;
+  float: left;
+  width: 23%;
+  margin: 0 1%; }
+
+.tile1, .tile2, .tile3, .tile4, .tile5 {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  border-top: 10px solid #000; }
+
+p {
+  width: 400px;
+  height: 100px;
+  background: #ccc; }
+
+.tile1 {
+  background: blue; }
+
+.tile2 {
+  background: orange; }
+
+.tile3 {
+  background: green; }
+
+.tile4 {
+  background: yellow; }
+
+.tile5 {
+  background: black; }
+
+/*# sourceMappingURL=navigation-menu.css.map */

@@ -1,0 +1,16 @@
+<div class="main-content">
+    <h2>Подаване на данни вътре в компонента </h2>
+    <p>Има два начина да се подадат данни в компонент, с property binding и event binding. В Angular данни и прихващане на събития
+        се случва от горе на долу, от родител към детето. Въпреки това събитията могат да използват DOM модела на събитията,
+        където потока на събитията е от долу на горе, от детето към родителя. Така, Аngular събитията могат да се третират
+        като редовни HTML DOM базирани събития. </p>
+
+    <p><code>@Input()</code> декоратора определя набор от параметри които могат да бъдат подадени от родителя на компонента.
+        Зa пример, ние можем да модифицираме <code>PasingDataIntoAComponentComponent</code> компонента така че <code>firstName</code> да бъде осигурено от родителският компонент като
+        променлива.
+    </p>
+    <img src="../assets/pasing-data-into-component.JPG" alt="Pasing data into a component"/>
+    <p><code>secondName</code> го подаваме като стринг при извикването на компонента в <code>app.component.html</code></p>
+    <iframe src="http://plnkr.co/edit/vZG0bh?p=preview" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
+    <p><code>@Inputs()</code> ни позволява да конфигурираме специфична инстанция на компонента. </p>
+</div>

@@ -1,0 +1,18 @@
+<div class="wrapper-second-menu">
+  <div class="second-menu" [ngClass]="{left: left }">
+    <a *ngFor="let tutorial of tutorials" [routerLink]="tutorial.name"> 
+  {{tutorial.link}}
+ </a>
+
+
+    <div (click)="left=!left" (click)="isActive=!isActive" class="hamburger-second-menu" [ngClass]="{isActive:isActive}" id="hamburger-3">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+

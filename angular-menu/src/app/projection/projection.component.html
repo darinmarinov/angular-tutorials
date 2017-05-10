@@ -1,0 +1,67 @@
+<div class="main-content">
+  <h2>Projection </h2>
+  <p><b>Projection</b> е много важна концепция на Angular.</p>
+  <p>Тя позволява многократна употреба и прави приложението по мащабно и гъвкаво</p>
+  <p>Това илюстрираме така, представете си че имаме</p>
+  <img src="../assets/projection-1.JPG" alt="Projection 1" />
+  <p>Компонентите поддържат по дефолт проекцията, и можете да използвате <code>ngContent</code> директивата да разположите съдържанието
+    от проекцията във Вашият темплейт.
+  </p>
+  <p>Така, нека променим <code>ChiledComponent</code> за да използваме проекцията:</p>
+  <img src="../assets/projection-2.JPG" alt="Projection 2" />
+  <p>След това използваме <code>ChildComponent </code> в темплейт:</p>
+  <pre><code class="lang-html">...
+  <span class="hljs-tag">&lt;<span class="hljs-name">rio-child</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>My <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>projected<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> content.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">rio-child</span>&gt;</span>
+...
+</code></pre>
+  <p>Това казва на Angular, че всичко написано между отвореният и затвореният таг на
+    <code>&lt;rio-child&gt;</code>, ще се илюстрира вътре в <code>&lt;ng-content&gt;&lt;/ng-content&gt;</code>.
+    <a href="http://plnkr.co/edit/QAQ6BFuwuzEDVvqAmN9L?p=preview" target="_blank" rel="nofollow">Вижте примера</a> </p>
+
+  <p class="comments-section">Какво ще стане ако имаме много <span><code>&lt;ng-content&gt;&lt;/ng-content&gt;</code></span>
+   и искаме да определим специфична позиция на проектираното съдържание 
+     <span><code>ng-content</code></span>? За пример, нека погледнем отново <code><span>ChildComponent</span></code>.
+     Ако искаме да определим мястото на показване на всяко съдържание в допълнителни <b>header</b>, <b>footer</b> и <b>section</b>
+</p>
+  <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"..."</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>Child Component with Select<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"..."</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-content</span> <span class="hljs-attr">select</span>=<span class="hljs-string">"header"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-content</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"..."</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-content</span> <span class="hljs-attr">select</span>=<span class="hljs-string">"section"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-content</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"..."</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-content</span> <span class="hljs-attr">select</span>=<span class="hljs-string">".class-select"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-content</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"..."</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ng-content</span> <span class="hljs-attr">select</span>=<span class="hljs-string">"footer"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-content</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+  <p>След това в темплейта, ние можем да използваме тази дериктива <code><<span>header</span>></code>, да определим позицията на проектираното съдържание
+   в <code>ng-content</code> с <code>select="header"</code>
+  </p>
+  <pre><code class="lang-html">...
+<span class="hljs-tag">&lt;<span class="hljs-name">rio-child-select</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>Section Content<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"class-select"</span>&gt;</span>
+    div with .class-select
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer Content<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header Content<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">rio-child-select</span>&gt;</span>
+...
+</code></pre>
+  <p>Също така преди да използваме директивата, developers използват да селектират <code>ng-<span>content</span></code> и име на CSS клас</p>
+  <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">ng-<span>content</span></span> <span class="hljs-attr">select</span>=<span class="hljs-string">".class-<span>select</span>"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ng-<span>content</span></span>&gt;</span>
+</code></pre>
+<p>app/app.component.html</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=
+<span class="hljs-string">"class-select"</span>&gt;</span> div with .class-select
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p><a href="http://plnkr.co/edit/AOz5HQWPMAgpnxdnoCIT?p=preview" target="_blank" rel="nofollow">Вижте примера</a> </p>
+</div>

@@ -1,0 +1,51 @@
+﻿$primary-color:#ccc ;
+$tile-colors: blue,orange,green,yellow,black;
+
+@function getColumnWidth($width, $columns,$margin){
+    @return ($width / $columns) - ($margin * 2);
+}
+
+
+$container-width: 100%;
+$column-count: 4;
+$margin: 1%;
+
+.container {
+  width: $container-width;
+}
+
+%column {
+  background: #000;
+  height: 200px;
+  display: block;
+  float: left;
+  width: getColumnWidth($container-width,$column-count,$margin);
+  margin: 0 $margin;
+}
+
+
+%tile {
+    @extend %column;
+    $primary-color: #000 ;
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    border-top: 10px solid $primary-color;
+}
+
+p{
+    width:400px;
+    height:100px;
+    background: $primary-color;
+}
+
+
+
+@each $color in $tile-colors{
+    $i : index($tile-colors,$color);
+    @debug tile $i to $color;
+     .tile#{$i}{
+         @extend %tile;
+         background: $color
+     }
+}

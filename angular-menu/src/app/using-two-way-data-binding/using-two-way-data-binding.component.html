@@ -1,0 +1,29 @@
+<div class="main-content">
+<h2>Използванe на Two-Way Data Binding </h2>
+<p><code>Two-way data binding</code> комбинира input  и <code>output</code> свързването в една единствена нотация, използвайки <code>ngModel</code> директива </p>
+<div><pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> [(<span class="hljs-attr">ngModel</span>)]=<span class="hljs-string">"name"</span> &gt;</span>
+</code></pre></div>
+<p>Друг по очевиден пример затова</p>
+<div>
+  <pre><code class="lang-html"><span class="hljs-tag"><span class="hljs-name">&lt;input</span> <span class="hljs-attr">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">username</span><span class="err">"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;</span>Hello {{<span>username</span>}}!<span class="nt">&lt;/p&gt;</span></span></code></pre>
+</div>
+<p>В този пример каквото напишем в <code>input</code> тага ще се отрази в <code>username</code> в параграфа.</p>
+<p>Как изглежда всъщност <code>two-way data binding</code>, затази цел трябва да погледнем по подробно <code>input</code> тага и да направим някой промени  </p>
+<div>
+<pre><code class="lang-html" data-lang="html"><span class="hljs-tag"><span class="nt">&lt;input</span> <span class="err">[</span><span class="na">value</span><span class="err">]="</span><span class="na">username</span><span class="err">"</span> <span class="err">(</span><span class="na">input</span><span class="err">)="</span><span class="na">username =</span><span class="err"> </span><span class="s">$event.target.value"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Hello {{<span>username</span>}}!<span class="nt">&lt;/p&gt;</span></span></code></pre>
+</div>
+<p>Нека погледнем какво се случва по-отблизо всъщност</p>
+<ul>
+   <li><b>[value]=”username”</b> свързва израза <code>username</code> със стойноста на <code>input</code> свойството.</li>
+   <li><b>(input)=”expression”</b>    </li>
+   <li><b>username = $event.target.value</b> този израз започва да се изпълнява веднага след като започне да се пише в полето.  </li>
+   <li><b>$event </b>    </li>
+</ul>
+<p>За да създадем наш компонент които да поддържа <code>two-way data binding</code>, трябва да дефинирам <code>@Output</code> 
+и <code>@Input</code> свойства.</p>
+<p>Може да разгледате по-подробно кода долу.</p> 
+<iframe src="http://plnkr.co/edit/OoBKpcBC5CZQX4H5bQg5?p=preview" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="100%" allowfullscreen></iframe>
+</div>
